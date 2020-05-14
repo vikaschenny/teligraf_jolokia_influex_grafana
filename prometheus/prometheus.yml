@@ -1,0 +1,430 @@
+--- 
+alerting: 
+  alertmanagers: 
+    - 
+      static_configs: 
+        - 
+          targets: ~
+global: 
+  evaluation_interval: 15s
+  scrape_interval: 15s
+rule_files: ~
+scrape_configs: 
+  - 
+    job_name: prometheus
+    static_configs: 
+      - 
+        targets: 
+          - "localhost:9090"
+  - 
+    job_name: windows-exporter
+    static_configs: 
+      - 
+        labels: 
+          instance: VW12PT360DUFT1
+        targets: 
+          - "172.18.6.85:9182"
+      - 
+        labels: 
+          instance: VW16PT360DUFT2
+        targets: 
+          - "172.18.6.73:9182"
+      - 
+        labels: 
+          instance: VW16PT360DUFT3
+        targets: 
+          - "172.18.6.90:9182"
+  - 
+    job_name: node
+    scrape_interval: 15s
+    static_configs: 
+      - 
+        labels: 
+          instance: vl6pt360dtps3.ams.com
+        targets: 
+          - "172.18.5.57:9100"
+      - 
+        labels: 
+          instance: vl6pt360dtps4.ams.com
+        targets: 
+          - "172.18.6.157:9100"
+      - 
+        labels: 
+          instance: vl6pt360dasy3.ams.com
+        targets: 
+          - "172.18.5.7:9100"
+      - 
+        labels: 
+          instance: vl6pt360dasy4.ams.com
+        targets: 
+          - "172.18.5.248:9100"
+      - 
+        labels: 
+          instance: vl6pt360dche4.ams.com
+        targets: 
+          - "172.18.5.239:9100"
+      - 
+        labels: 
+          instance: vl6pt360dche5.ams.com
+        targets: 
+          - "172.18.6.11:9100"
+      -
+        labels:
+          instance: vl7pt360dlog4.ams.com
+        targets:
+          - "172.18.6.103:9100"
+      - 
+        labels: 
+          instance: xlphxt360dint1
+        targets: 
+          - "162.70.20.28:18902"
+      - 
+        labels: 
+          instance: vl6pt360dint3.ams.com
+        targets: 
+          - "172.18.5.104:9100"
+      -
+        labels:
+          instance: vl7pt360dtps5.ams.com
+        targets:
+          - "172.18.7.238:9100"
+      -
+        labels:
+          instance: vl7pt360dasy5.ams.com
+        targets:
+          - "172.18.7.229:9100"
+      -
+        labels:
+          instance: vl7pt360dtps6.ams.com
+        targets:
+          - "172.18.7.249:9100"
+      -
+        labels:
+          instance: vl7pt360dasy6.ams.com
+        targets:
+          - "172.18.7.248:9100"
+      -
+        labels:
+          instance: vl7pt360djira1.ams.com
+        targets:
+          - "172.18.5.227:9100"
+
+
+  - 
+    job_name: apache
+#    metrics_path: '/server-status'
+    scrape_interval: 15s
+#    scheme: https
+#    tls_config:
+#      insecure_skip_verify: true
+    static_configs: 
+      - 
+        labels: 
+          instance: HSBC Apache
+        targets: 
+          - "172.18.6.103:9117"
+  - 
+    job_name: jenkins
+    metrics_path: "jenkins/prometheus/"
+    scheme: http
+    basic_auth:
+      username: "chennaiah.birru"
+      password: "redhat"
+    static_configs:
+    - targets:
+      - '172.18.5.61:8989'
+  - 
+    job_name: vl6pt360dtps3.ams.com-jvm
+    scrape_interval: 120s
+    scrape_timeout: 119s
+    static_configs: 
+      - 
+        labels: 
+          instance: "TPS Engine devqa1000"
+        targets: 
+          - "172.18.5.57:5504"
+      - 
+        labels: 
+          instance: "TPS Engine prebuildmaster1010"
+        targets: 
+          - "172.18.5.57:5505"
+      - 
+        labels: 
+          instance: "TPS Engine buildqa1010"
+        targets: 
+          - "172.18.5.57:5510"
+      - 
+        labels: 
+          instance: "TPS Engine systest1010"
+        targets: 
+          - "172.18.5.57:5515"
+      - 
+        labels: 
+          instance: "TPS Engine systest21000"
+        targets: 
+          - "172.18.5.57:5521"
+      - 
+        labels: 
+          instance: "TPS Engine dtf1010"
+        targets: 
+          - "172.18.5.57:5522"
+      - 
+        labels: 
+          instance: "TPS Engine stringtest1012"
+        targets: 
+          - "172.18.5.57:5523"
+      - 
+        labels: 
+          instance: "TPS Engine buildqa1011"
+        targets: 
+          - "172.18.5.57:5524"
+      - 
+        labels: 
+          instance: "TPS Engine architecture"
+        targets: 
+          - "172.18.5.57:5506"
+      - 
+        labels: 
+          instance: "TPS Engine atqa21010"
+        targets: 
+          - "172.18.5.57:5520"
+      - 
+        labels: 
+          instance: "TPS Engine stringtest21012"
+        targets: 
+          - "172.18.5.57:5502"
+  - 
+    job_name: vl6pt360dtps4.ams.com-jvm
+    scrape_interval: 120s
+    scrape_timeout: 119s
+    static_configs: 
+      - 
+        labels: 
+          instance: "TPS Engine architecture-clone"
+        targets: 
+          - "172.18.6.157:5501"
+      - 
+        labels: 
+          instance: "TPS Engine buildqa1012"
+        targets: 
+          - "172.18.6.157:5502"
+      - 
+        labels:
+          instance: "TPS Engine prebuildmasterwaj"
+        targets:
+          - "172.18.6.157:5504"
+      -
+        labels: 
+          instance: "TPS Engine playground1012"
+        targets: 
+          - "172.18.6.157:5506"
+      - 
+        labels: 
+          instance: "TPS Engine playground1010"
+        targets: 
+          - "172.18.6.157:5510"
+      - 
+        labels: 
+          instance: "TPS Engine playgroundwaj"
+        targets: 
+          - "172.18.6.157:5511"
+      - 
+        labels: 
+          instance: "TPS Engine stringtest1010"
+        targets: 
+          - "172.18.6.157:5512"
+      - 
+        labels: 
+          instance: "TPS Engine atqa1010"
+        targets: 
+          - "172.18.6.157:5513"
+      - 
+        labels: 
+          instance: "TPS Engine prebuildmaster1020"
+        targets: 
+          - "172.18.6.157:5516"
+      - 
+        labels: 
+          instance: "TPS Engine playground1020"
+        targets: 
+          - "172.18.6.157:5517"
+      - 
+        labels: 
+          instance: "TPS Engine stringtest1011"
+        targets: 
+          - "172.18.6.157:5518"
+      - 
+        labels: 
+          instance: "TPS Engine atqa1011"
+        targets: 
+          - "172.18.6.157:5519"
+  - 
+    job_name: vl6pt360dasy3.ams.com-jvm
+    scrape_interval: 20m
+    scrape_timeout: 19m
+    static_configs: 
+      - 
+        labels: 
+          instance: "TPS Async Processor buildqa1012"
+        targets: 
+          - "172.18.5.7:5508"
+      - 
+        labels: 
+          instance: "TPS Async Processor playgroundwaj"
+        targets: 
+          - "172.18.5.7:5512"
+      - 
+        labels: 
+          instance: "TPS Async Processor systest21000"
+        targets: 
+          - "172.18.5.7:5515"
+      - 
+        labels: 
+          instance: "TPS Async Processor playground1011"
+        targets: 
+          - "172.18.5.7:5519"
+      - 
+        labels: 
+          instance: "TPS Async Processor stringtest1012"
+        targets: 
+          - "172.18.5.7:5525"
+      - 
+        labels: 
+          instance: "TPS Async Processor prebuildmaster1020"
+        targets: 
+          - "172.18.5.7:5527"
+      - 
+        labels: 
+          instance: "TPS Async Processor playground1020"
+        targets: 
+          - "172.18.5.7:5528"
+      - 
+        labels: 
+          instance: "TPS Async Processor stringtest1011"
+        targets: 
+          - "172.18.5.7:5529"
+      - 
+        labels: 
+          instance: "TPS Async Processor stringtest21012"
+        targets: 
+          - "172.18.5.7:5505"
+  - 
+    job_name: vl6pt360dasy4.ams.com-jvm
+    scrape_interval: 15m
+    scrape_timeout: 14m
+    static_configs: 
+      - 
+        labels: 
+          instance: "TPS Async Processor atqa1011"
+        targets: 
+          - "172.18.5.248:5504"
+      - 
+        labels: 
+          instance: "TPS Async Processor dtf1012"
+        targets: 
+          - "172.18.5.248:5506"
+      - 
+        labels: 
+          instance: "TPS Async Processor dtf1010"
+        targets: 
+          - "172.18.5.248:5524"
+      - 
+        labels: 
+          instance: "TPS Async Processor systest9750"
+        targets: 
+          - "172.18.5.248:5527"
+      - 
+        labels: 
+          instance: "TPS Async Processor atqa1010"
+        targets: 
+          - "172.18.5.248:5528"
+      - 
+        labels: 
+          instance: "TPS Async Processor buildqa1011"
+        targets: 
+          - "172.18.5.248:5533"
+  - 
+    job_name: vl6pt360dint3.ams.com-jvm
+    static_configs: 
+      - 
+        labels: 
+          instance: "TPS trade-integrator HSBC"
+        targets: 
+          - "172.18.5.104:5502"
+  - 
+    job_name: vl6pt360dasy3.ams.com-jvm-long
+    scrape_interval: 55m
+    scrape_timeout: 54m
+    static_configs: 
+      - 
+        labels: 
+          instance: "TPS Async Processor buildqa1010"
+        targets: 
+          - "172.18.5.7:5518"
+      - 
+        labels: 
+          instance: "TPS Async Processor playground1010"
+        targets: 
+          - "172.18.5.7:5517"
+      -
+        labels:
+          instance: "TPS Async Processor playground1012"
+        targets:
+          - "172.18.5.7:5524"
+      -
+        labels:
+          instance: "TPS Async Processor prebuildmaster1010"
+        targets:
+          - "172.18.5.7:5521"
+  -
+    job_name: vl6pt360dasy4.ams.com-jvm-long
+    scrape_interval: 55m
+    scrape_timeout: 54m
+    static_configs:
+      -
+        labels:
+          instance: "TPS Async Processor atqa21010"
+        targets:
+          - "172.18.5.248:5523"
+      -
+        labels:
+          instance: "TPS Async Processor stringtest9750"
+        targets:
+          - "172.18.5.248:5522"
+      -
+        labels:
+          instance: "TPS Async Processor systest1010"
+        targets:
+          - "172.18.5.248:5521"
+      -
+        labels:
+          instance: "TPS Async Processor stringtest1010"
+        targets:
+          - "172.18.5.248:5525"
+
+  -
+    job_name: confluence
+    scheme: http
+    metrics_path: '/confluence/plugins/servlet/prometheus/metrics'
+    scrape_interval: 15s
+    tls_config:
+    static_configs:
+      -
+        labels:
+          instance: confluence
+        targets:
+          - "collaboration.tps.dev.cgitrade360.com"
+
+  -
+    job_name: jira
+    scheme: http
+    metrics_path: '/jira/plugins/servlet/prometheus/metrics'
+    scrape_interval: 15s
+    tls_config:
+    static_configs:
+      -
+        labels:
+          instance: jira
+        targets:
+          - "collaboration.tps.dev.cgitrade360.com"
+

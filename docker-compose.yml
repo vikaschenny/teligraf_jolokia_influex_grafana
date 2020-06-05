@@ -55,17 +55,17 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
-#  telegrafnew:
-#    container_name: telegrafnew
-#    image: telegraf:1.3.3
-#    volumes:
-#      - /apps/t360/Grafana/grafana/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
-#      - /var/run/docker.sock:/var/run/docker.sock
-#    restart: always
-#    networks:
-#      - monitor-net
-#    labels:
-#      org.label-schema.group: "monitoring"
+  telegraf:
+    container_name: telegraf
+    image: telegraf:latest
+    volumes:
+      - /apps/t360/Grafana/grafana/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
 
   remotestorageadapter:
     container_name: remotestorageadapter
